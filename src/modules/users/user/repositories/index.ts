@@ -5,7 +5,7 @@ import {
   IUserRepository,
 } from './interfaces';
 import { ClientTypeormRepository, UserTypeormRepository } from './typeorm';
-import { MeetingsUserTypeormRepository } from './typeorm/MeetingsUserRepository';
+import { MeetingsUserTypeormRepository } from './typeorm';
 
 export * from './interfaces';
 
