@@ -1,10 +1,16 @@
 import { container } from 'tsyringe';
-import { IMeetingsUserRepository } from './interfaces';
-import { MeetingsMeetingTypeormRepository } from './typeorm';
+import { IMeetingsRepository, ITodosRepository } from './interfaces';
+import {
+  MeetingsMeetingTypeormRepository,
+  TodosTypeormRepository,
+} from './typeorm';
 
 export * from './interfaces';
 
-container.register<IMeetingsUserRepository>(
-  'MeetingsMeetingTypeormRepository',
-  { useValue: MeetingsMeetingTypeormRepository },
-);
+container.register<IMeetingsRepository>('MeetingsMeetingTypeormRepository', {
+  useValue: MeetingsMeetingTypeormRepository,
+});
+
+container.register<ITodosRepository>('TodosTypeormRepository', {
+  useValue: TodosTypeormRepository,
+});

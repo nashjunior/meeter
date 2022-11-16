@@ -5,8 +5,8 @@ import {
 
 export type IFindMeetings = {
   deleted?: boolean;
-  lat?: number;
-  long?: number;
+  lat?: [number, number];
+  long?: [number, number];
   query?: {
     fields: IQueryFieldsListMeetingsValues[];
     value: string;

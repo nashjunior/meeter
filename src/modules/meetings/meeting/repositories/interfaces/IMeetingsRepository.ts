@@ -3,4 +3,5 @@ import { IFindMeetings } from './IFindMeetingsType';
 
 export interface IMeetingsRepository {
   find(options: IFindMeetings): Promise<[Meeting[], number]>;
+  findByUUID(id: string): Promise<Meeting>;
 }

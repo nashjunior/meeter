@@ -15,26 +15,26 @@ export const MeetingsMeetingTypeormRepository = MeeterDataSource.getRepository(
     let hasQuery = hasDeletion;
 
     if (lat) {
-      const queryString = 'meetings.lat <= :lat';
+      const queryString = 'meetings.lat between :lat1 AND :lat2 ';
 
-      if (hasQuery) builder.andWhere(queryString, { lat });
-      else builder.where(queryString, { lat });
+      if (hasQuery)
+        builder.andWhere(queryString, { lat1: lat[1], lat2: lat[0] });
+      else builder.where(queryString, { lat1: lat[1], lat2: lat[0] });
 
       hasQuery = true;
     }
 
     if (long) {
-      const queryString = 'meetings.long <= :long';
+      const queryString = 'meetings.long between :long1 AND :long2';
 
-      if (hasQuery) builder.andWhere(queryString, { long });
-      else builder.where(queryString, { long });
+      if (hasQuery)
+        builder.andWhere(queryString, { long1: long[0], long2: long[1] });
+      else builder.where(queryString, { long1: long[0], long2: long[1] });
 
       hasQuery = true;
     }
 
-    if (hasDeletion) {
-      builder.where(queryDeleted, { deleted });
-    }
+    if (hasDeletion) builder.where(queryDeleted, { deleted });
 
     if (hasPagination) {
       builder.take(page * perPage - perPage);
@@ -42,5 +42,9 @@ export const MeetingsMeetingTypeormRepository = MeeterDataSource.getRepository(
     }
 
     return builder.getManyAndCount();
+  },
+
+  findByUUID(id) {
+    return this.findOneOrFail({ where: { id } });
   },
 });

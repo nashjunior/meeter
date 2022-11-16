@@ -32,6 +32,8 @@ export class ListMeetingsService {
       ...rest,
     });
 
+    console.log(rest);
+
     return {
       items: manyModelMeetingsToAPI(meetings),
       total,

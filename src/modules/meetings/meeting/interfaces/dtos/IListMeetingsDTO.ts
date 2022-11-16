@@ -5,8 +5,8 @@ import {
 
 export interface IListMeetingsDTO {
   deleted?: boolean;
-  lat?: number;
-  long?: number;
+  lat?: [number, number];
+  long?: [number, number];
 
   queryFields: IQueryFieldsListMeetings[];
   query?: string;

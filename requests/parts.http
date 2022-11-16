@@ -1,0 +1,41 @@
+POST http://localhost:40000/parts_photos HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "123"
+}
+
+###
+GET http://localhost:40000/parts/621268ba-efa3-453b-9078-125b4a54c6d4 HTTP/1.1
+
+###
+
+POST http://localhost:40000/parts_photos HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="id_part"
+
+621268ba-efa3-453b-9078-125b4a54c6d4
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="url"
+
+https://www.google.com/
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="Roteiro.pdf"
+Content-Type: application/pdf
+
+< /home/nashjunior/Documents/Roteiro.pdf
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+POST http://localhost:40000/parts_photos HTTP/1.1
+Content-Type: application/json
+
+{
+  "id_part":"621268ba-efa3-453b-9078-125b4a54c6d4",
+  "url": "https://www.google.com"
+}
+
+###
+GET http://localhost:40000/parts?query=1&query_fields[]=NAME HTTP/1.1

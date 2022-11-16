@@ -1,6 +1,6 @@
 import { IQueryFieldsListMeetings } from '../../enums';
 
-export type IListMeetingRequest = {
+export type IListTodoRequest = {
   query?: string;
   'query_fields[]'?: IQueryFieldsListMeetings | IQueryFieldsListMeetings[];
   query_fields?: IQueryFieldsListMeetings | IQueryFieldsListMeetings[];

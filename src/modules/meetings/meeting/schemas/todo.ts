@@ -1,26 +1,17 @@
 import * as Yup from 'yup';
 import {
-  IQueryFieldsListMeetings,
-  ISortFieldsListMeetings,
-  QueryFieldsListMettings,
-  SortFieldsListMeetings,
+  IQueryFieldsListTodo,
+  ISortFieldsListTodos,
+  QueryFieldsListTodo,
+  SortFieldsListTodos,
 } from '../enums';
 
-export const editMeetingSchema = Yup.object().shape({
-  name: Yup.string().required().max(128),
-  lat: Yup.number().required().min(-90).max(90),
-  long: Yup.number().required().min(-180).max(180),
-  start: Yup.date().required(),
-  end: Yup.date().required(),
-  description: Yup.string().notRequired(),
-});
-
-export const findMeetingsSchema = Yup.object().shape(
+export const findTodosSchema = Yup.object().shape(
   {
     query: Yup.string().notRequired(),
     queryFields: Yup.array().of(
-      Yup.mixed<IQueryFieldsListMeetings>().oneOf(
-        Object.keys(QueryFieldsListMettings) as any,
+      Yup.mixed<IQueryFieldsListTodo>().oneOf(
+        Object.keys(QueryFieldsListTodo) as any,
       ),
     ),
 
@@ -44,8 +35,8 @@ export const findMeetingsSchema = Yup.object().shape(
       ),
     sortedFields: Yup.array()
       .of(
-        Yup.mixed<ISortFieldsListMeetings>()
-          .oneOf(Object.keys(SortFieldsListMeetings) as any)
+        Yup.mixed<ISortFieldsListTodos>()
+          .oneOf(Object.keys(SortFieldsListTodos) as any)
           .required(),
       )
       .test(
@@ -60,14 +51,6 @@ export const findMeetingsSchema = Yup.object().shape(
         },
       ),
 
-    lat: Yup.array()
-      .of(Yup.number().notRequired().typeError('Invalid format page'))
-      .length(2)
-      .notRequired(),
-    long: Yup.array()
-      .of(Yup.number().notRequired().typeError('Invalid format page'))
-      .length(2)
-      .notRequired(),
     page: Yup.number().notRequired().typeError('Invalid format page'),
     perPage: Yup.number().notRequired().typeError('Invalid format perPage'),
   },
