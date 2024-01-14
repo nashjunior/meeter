@@ -19,8 +19,9 @@
 -  Yup
 -  JEST ---  UNITARY AND INTEGRATION TESTING
 -  SWAGGER
--  POSTGRES --- 
+-  POSTGRES
 
 
 ### Command to run Backend
+-  git checkout feature/meetings
 -  yarn dev
