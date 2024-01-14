@@ -10,7 +10,8 @@
 
 ## Technology used :
 -  NodeJS --- Fastify.
--  JWT --- AMAZON AWS --- ECS --- ECR --- EC2]
+-  JWT ---
+-  TypeORM
 -  Yup
 -  JEST ---  UNITARY AND INTEGRATION TESTING
 -  SWAGGER
